@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Student</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h2>Add New Student</h2>
+    <form>
+      Name: <input type="text" id="name" />
+      <br />
+      Birth Date: <input type="date" id="birthDate" />
+      <br />
+      Gender:
+      <input name="gender" type="radio" id="male" value="M" checked />
+      <label for="M">Male</label>
+      <input name="gender" type="radio" id="female" value="F" />
+      <label for="F">Female</label>
+      <br />
+      <input type="submit" id="submit" value="Submit" />
+    </form>
+    <br /><br />
+    <p id="message"></p>
+    <a href="./delete.html">Delete Student</a>
+    <script src="./index.js"></script>
+  </body>
+</html>

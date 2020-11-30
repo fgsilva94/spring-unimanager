@@ -37,7 +37,26 @@ public class StudentRepository {
   }
 
   public static void addStudent(Student student) {
-    Student newStudent = new Student(student.getName(), student.getBirthDate(), student.getGender());
-    students.add(newStudent);
+    students.add(student);
+  }
+
+  public static Student getStudentByEmail(String email) {
+    for (Student x : students) {
+      if (x.getEmail().equals(email)) {
+        return x;
+      }
+    }
+
+    return null;
+  }
+
+  public static Student getStudentByName(String name) {
+    for (Student x : students) {
+      if (x.getName().toLowerCase().equals(name.toLowerCase())) {
+        return x;
+      }
+    }
+
+    return null;
   }
 }

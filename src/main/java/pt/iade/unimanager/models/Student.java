@@ -1,6 +1,9 @@
 package pt.iade.unimanager.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Student {
   private static int nextNumber = 0;
@@ -10,8 +13,8 @@ public class Student {
   private char gender;
   private int number;
 
-  public Student() {
-  }
+  @JsonIgnore
+  private ArrayList<Enrolment> enrolments;
 
   public Student(String name, LocalDate birthDate, char gender) {
     this.name = name;
@@ -20,6 +23,7 @@ public class Student {
     this.number = nextNumber;
     nextNumber++;
     email = "";
+    enrolments = new ArrayList<>();
   }
 
   public static int getNextNumber() {
@@ -60,5 +64,24 @@ public class Student {
 
   public int getNumber() {
     return number;
+  }
+
+  public ArrayList<Enrolment> getEnrolments() {
+    return enrolments;
+  }
+
+  public Enrolment getEnrolmentByUnitId(int unitId) {
+    for (Enrolment enr : enrolments) {
+      if (enr.getUnit().getId() == unitId) {
+        return enr;
+      }
+    }
+
+    return null;
+  }
+
+  public void enroll(Enrolment enrolment) {
+    enrolments.add(enrolment);
+    enrolment.getUnit().getEnrolments().add(enrolment);
   }
 }
