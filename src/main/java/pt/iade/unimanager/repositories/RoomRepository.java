@@ -1,6 +1,7 @@
 package pt.iade.unimanager.repositories;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pt.iade.unimanager.models.Computer;
 import pt.iade.unimanager.models.Laboratory;
@@ -15,16 +16,16 @@ public class RoomRepository {
     rooms.add(new Room("25", 25));
     rooms.add(new Room("15", 20));
     Laboratory l = new Laboratory("36", 30);
-    l.getMaterials().add(new Material("Chair", "New"));
-    l.getMaterials().add(new Material("Table", "New"));
-    l.getMaterials().add(new Computer("I7", "New"));
-    l.getMaterials().add(new Computer("I5", "New"));
+    l.getMaterials().add(new Material("Chair"));
+    l.getMaterials().add(new Material("Table"));
+    l.getMaterials().add(new Computer("I7"));
+    l.getMaterials().add(new Computer("I5"));
     rooms.add(l);
     l = new Laboratory("23", 20);
-    l.getMaterials().add(new Material("Chair", "New"));
-    l.getMaterials().add(new Material("Table", "New"));
-    l.getMaterials().add(new Computer("I7", "Used"));
-    l.getMaterials().add(new Computer("I5", "New"));
+    l.getMaterials().add(new Material("Chair"));
+    l.getMaterials().add(new Material("Table"));
+    l.getMaterials().add(new Computer("I7"));
+    l.getMaterials().add(new Computer("I5"));
     rooms.add(l);
   }
 
@@ -48,5 +49,15 @@ public class RoomRepository {
 
   public static boolean deleteRoomByDesignation(String designation) {
     return rooms.removeIf(x -> x.getDesignation().toLowerCase().equals(designation.toLowerCase()));
+  }
+
+  public static List<Material> getMaterialsByRoomDesignation(String designation) {
+    Room r = getRoomByDesignation(designation);
+    if (r.getClass().equals(Laboratory.class)) {
+      Laboratory l = (Laboratory) r;
+      return l.getMaterials();
+    } else {
+      return null;
+    }
   }
 }

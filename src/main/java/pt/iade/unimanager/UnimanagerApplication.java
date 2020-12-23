@@ -17,6 +17,7 @@ public class UnimanagerApplication {
     UnitRepository.populate();
     TeacherRepository.populate();
     RoomRepository.populate();
+    StudentRepository.populateEnrolment();
   }
 
 }

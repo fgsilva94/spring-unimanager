@@ -13,6 +13,10 @@ public class TeacherRepository {
     teachers.add(new Teacher("Miguel", LocalDate.parse("1990-05-12"), 'M'));
     teachers.add(new Teacher("Jacinto", LocalDate.parse("1990-05-12"), 'M'));
     teachers.add(new Teacher("Alexandra", LocalDate.parse("1990-05-12"), 'M'));
+
+    teachers.get(0).getUnits().add(UnitRepository.getUnitById(0));
+    teachers.get(1).getUnits().add(UnitRepository.getUnitById(1));
+    teachers.get(2).getUnits().add(UnitRepository.getUnitById(4));
   }
 
   public static ArrayList<Teacher> getAllTeachers() {

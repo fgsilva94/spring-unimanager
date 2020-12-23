@@ -6,8 +6,8 @@ import java.util.List;
 public class Computer extends Material {
   protected List<String> specifications;
 
-  public Computer(String name, String state) {
-    super(name, state);
+  public Computer(String name) {
+    super(name);
     specifications = new ArrayList<>();
   }
 

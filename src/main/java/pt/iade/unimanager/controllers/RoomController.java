@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pt.iade.unimanager.models.Material;
 import pt.iade.unimanager.models.Response;
 import pt.iade.unimanager.models.Room;
 import pt.iade.unimanager.models.exceptions.NotFoundException;
@@ -56,6 +57,18 @@ public class RoomController {
       return new Response(designation + " was deleted.", null);
     } else {
       return new Response(designation + " not found.", null);
+    }
+  }
+
+  @GetMapping(path = "/designation/{designation}/materials", produces = MediaType.APPLICATION_JSON_VALUE)
+  public List<Material> getMaterialsByRoomDesignation(@PathVariable("designation") String designation)
+      throws NotFoundException {
+    logger.info("Sending materials from room " + designation);
+
+    if (RoomRepository.getMaterialsByRoomDesignation(designation) != null) {
+      return RoomRepository.getMaterialsByRoomDesignation(designation);
+    } else {
+      throw new NotFoundException(designation, "Room", "Designation");
     }
   }
 }

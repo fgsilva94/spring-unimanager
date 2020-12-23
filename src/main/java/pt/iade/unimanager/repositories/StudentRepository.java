@@ -3,6 +3,7 @@ package pt.iade.unimanager.repositories;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import pt.iade.unimanager.models.Enrolment;
 import pt.iade.unimanager.models.Student;
 
 public class StudentRepository {
@@ -16,6 +17,30 @@ public class StudentRepository {
     s = new Student("James", LocalDate.parse("2001-07-02"), 'M');
     s.setEmail("James@gmail.com");
     students.add(s);
+  }
+
+  public static void populateEnrolment() {
+    students.get(0).enroll(new Enrolment(students.get(0), UnitRepository.getUnitById(0), 15));
+    students.get(0).enroll(new Enrolment(students.get(0), UnitRepository.getUnitById(1), 18));
+    students.get(0).enroll(new Enrolment(students.get(0), UnitRepository.getUnitById(2), 12));
+    students.get(0).enroll(new Enrolment(students.get(0), UnitRepository.getUnitById(3), 9));
+    students.get(0).enroll(new Enrolment(students.get(0), UnitRepository.getUnitById(4), 20));
+    students.get(0).enroll(new Enrolment(students.get(0), UnitRepository.getUnitById(5), 17));
+
+    students.get(1).enroll(new Enrolment(students.get(1), UnitRepository.getUnitById(0), 19));
+    students.get(1).enroll(new Enrolment(students.get(1), UnitRepository.getUnitById(1), 13));
+    students.get(1).enroll(new Enrolment(students.get(1), UnitRepository.getUnitById(2), 9));
+    students.get(1).enroll(new Enrolment(students.get(1), UnitRepository.getUnitById(3), 16));
+    students.get(1).enroll(new Enrolment(students.get(1), UnitRepository.getUnitById(4), 11));
+    students.get(1).enroll(new Enrolment(students.get(1), UnitRepository.getUnitById(5), 18));
+
+    students.get(2).enroll(new Enrolment(students.get(2), UnitRepository.getUnitById(0), 20));
+    students.get(2).enroll(new Enrolment(students.get(2), UnitRepository.getUnitById(1), 12));
+    students.get(2).enroll(new Enrolment(students.get(2), UnitRepository.getUnitById(2), 17));
+    students.get(2).enroll(new Enrolment(students.get(2), UnitRepository.getUnitById(3), 19));
+    students.get(2).enroll(new Enrolment(students.get(2), UnitRepository.getUnitById(4), 13));
+    students.get(2).enroll(new Enrolment(students.get(2), UnitRepository.getUnitById(5), 14));
+
   }
 
   public static ArrayList<Student> getAllStudents() {

@@ -1,12 +1,14 @@
 package pt.iade.unimanager.models;
 
+import pt.iade.unimanager.models.enums.MaterialState;
+
 public class Material {
   protected String name;
-  protected String state;
+  protected MaterialState state;
 
-  public Material(String name, String state) {
+  public Material(String name) {
     this.name = name;
-    this.state = state;
+    state = MaterialState.OK;
   }
 
   public String getName() {
@@ -17,11 +19,11 @@ public class Material {
     this.name = name;
   }
 
-  public String getState() {
+  public MaterialState getState() {
     return state;
   }
 
-  public void setState(String state) {
+  public void setState(MaterialState state) {
     this.state = state;
   }
 }
